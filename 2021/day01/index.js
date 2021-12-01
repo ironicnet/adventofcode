@@ -1,19 +1,18 @@
-const { assertEqual } = require("../../helpers/test");
-
 function getMesurementCount (data) {
-    return 0;
+
+    const result = data.reduce( (prev, curr) => {
+        const { last, count: prevCount } = prev;
+        const isIncrement = last !== null && curr > last;
+        const count = prevCount + (isIncrement ? 1 : 0);
+
+        return {
+            last: curr,
+            count,
+        };
+    }, {
+        last: null,
+        count: 0
+    });
+    return result.count;
 }
-
-
-assertEqual(7, getMesurementCount([
-    199,
-    200,
-    208,
-    210,
-    200,
-    207,
-    240,
-    269,
-    260,
-    263,
-]));
+module.exports = getMesurementCount;
