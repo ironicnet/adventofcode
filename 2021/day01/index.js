@@ -1,4 +1,4 @@
-function getMesurementCount (data) {
+function part1 (data) {
 
     const result = data.reduce( (prev, curr) => {
         const { last, count: prevCount } = prev;
@@ -15,4 +15,22 @@ function getMesurementCount (data) {
     });
     return result.count;
 }
-module.exports = getMesurementCount;
+function part2 (data) {
+
+    let count = 0;
+    let last = null;
+    for (let i = 0; i< data.length; i+=1) {
+        const curr = data[i] + data[i+1] + data[i+2];
+
+        const isIncrement = last !== null && curr > last;
+        
+        last = curr;
+        count += (isIncrement ? 1 : 0);
+    }
+    
+    return count;
+}
+module.exports = {
+    part1,
+    part2,
+};
