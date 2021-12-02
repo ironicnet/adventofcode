@@ -15,5 +15,8 @@ const filePath = `./${file}/${command}.js`;
 const commandFn = require(filePath);
 
 if (commandFn) {
+    console.error(`Executing ${command} at ${filePath}`)
     commandFn();
+} else {
+    console.error(`No command found at ${filePath}`)
 }
