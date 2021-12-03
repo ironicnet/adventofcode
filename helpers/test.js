@@ -9,6 +9,11 @@ const assertNotEqual = (expected, value) => {
     throw new Error(`Expected ${expected} to be different from ${value}.`);
   }
 };
+const assertNotUndefined = (value) => {
+  if (typeof value === "undefined") {
+    throw new Error(`Expected ${value} to not be undefined.`);
+  }
+};
 const assertCanFind = (expected, values) => {
   const result = values.find(expected);
   if (!result) {
@@ -48,4 +53,5 @@ module.exports = {
   assertEqual,
   assertIncludes,
   assertNotEqual,
+  assertNotUndefined,
 }
