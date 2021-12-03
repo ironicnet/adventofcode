@@ -30,7 +30,7 @@ const part2Run = () => {
     const result = part2(data);
     console.log(\`Question?\`, result);
     wrongAnswers.every(answer => assertNotEqual(answer, result));
-    if (typeof answer === 'undefined') assertEqual(answer, result);
+    if (typeof answer !== 'undefined') assertEqual(answer, result);
 };
 module.exports = function run() {
     it('Part 1', () => {
