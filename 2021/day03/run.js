@@ -13,11 +13,11 @@ const part1Run = () => {
     if (typeof answer !== 'undefined') assertEqual(answer, result);
 };
 const part2Run = () => {
-    const wrongAnswers = [undefined];
-    const answer = undefined;
+    const wrongAnswers = [845186];
+    const answer = 4636702;
     const data = readLines(`${__dirname}/input.txt`);
-    const result = part2(data);
-    console.log(`Question?`, result);
+    const result = part2(data).lifeSupportRating;
+    console.log(`What is the life support rating of the submarine?`, result);
     wrongAnswers.every(answer => assertNotEqual(answer, result));
     if (typeof answer !== 'undefined') assertEqual(answer, result);
 };
