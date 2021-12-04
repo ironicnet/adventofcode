@@ -1,45 +1,48 @@
 module.exports = {
-    [`index.js`]: `function part1 (data) {\n\
-\x20    // Part 1 here\n\
-\x20}\n\
-\x20function part2 (data) {\n\
-\x20    // Part 2 here\n\
-\x20}\n\
-\x20module.exports = {\n\
-\x20    part1,\n\
-\x20    part2,\n\
-\x20};\n`,
+    [`index.js`]: `function part1 (data) {
+    // Part 1 here
+    return {}
+}
+function part2 (data) {
+    // Part 2 here
+    return {}
+}
+module.exports = {
+    part1,
+    part2,
+};
+`,
     [`run.js`]: `const { part1, part2 } = require('.');
-const { readLines } = require('../../helpers/fs');
-const { assertNotEqual, it } = require('../../helpers/test');
+const { executePart } = require('../../helpers/run');
+const { it } = require('../../helpers/test');
 
-
-const part1Run = () => {
-    const wrongAnswers = [undefined];
-    const answer = undefined;
-    const data = readLines(\`\${__dirname}/input.txt\`);
-    const result = part1(data);
-    console.log(\`Question?\`, result);
-    wrongAnswers.every(answer => assertNotEqual(answer, result));
-    if (typeof answer === 'undefined') assertEqual(answer, result);
-};
-const part2Run = () => {
-    const wrongAnswers = [undefined];
-    const answer = undefined;
-    const data = readLines(\`\${__dirname}/input.txt\`);
-    const result = part2(data);
-    console.log(\`Question?\`, result);
-    wrongAnswers.every(answer => assertNotEqual(answer, result));
-    if (typeof answer !== 'undefined') assertEqual(answer, result);
-};
+const config = {
+    part1: {
+        wrongAnswers: [],
+        answer: undefined,
+        question: 'Part 1 Question?',
+        property: 'result',
+        inputFile: \`\${__dirname}/input.txt\`,
+        exec: part1,
+    },
+    part2: {
+        wrongAnswers: [],
+        answer: undefined,
+        question: 'Part 2 Question?',
+        property: 'result',
+        inputFile: \`\${__dirname}/input.txt\`,
+        exec: part2,
+    },
+}
 module.exports = function run() {
     it('Part 1', () => {
-        part1Run();
+        executePart(config.part1);
     });
     it('Part 2', () => {
-        part2Run();
+        executePart(config.part2);
     });
-}`,
+}
+`,
 [`test.js`]: `const { assertNotUndefined, it } = require("../../helpers/test");
 const { part1, part2 } = require(".");
 

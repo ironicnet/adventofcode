@@ -11,7 +11,7 @@ const assertNotEqual = (expected, value) => {
 };
 const assertNotUndefined = (value) => {
   if (typeof value === "undefined") {
-    throw new Error(`Expected ${value} to not be undefined.`);
+    throw new Error(`Expected value to not be undefined.`);
   }
 };
 const assertCanFind = (expected, values) => {
