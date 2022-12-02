@@ -1,4 +1,5 @@
 module.exports = {
+  day: {
     [`index.js`]: `function part1 (data) {
     // Part 1 here
     return {}
@@ -43,7 +44,7 @@ module.exports = function run() {
     });
 }
 `,
-[`test.js`]: `const { assertNotUndefined, it } = require("../../helpers/test");
+    [`test.js`]: `const { assertNotUndefined, it } = require("../../helpers/test");
 const { part1, part2 } = require(".");
 
 module.exports = function test() {
@@ -62,6 +63,31 @@ module.exports = function test() {
         assertNotUndefined(result);
     })
 }`,
-[`readme.md`]: `Add the brief here`,
-[`input.txt`]: `INPUT HERE`,
+    [`readme.md`]: `Add the brief here`,
+    [`input.txt`]: `INPUT HERE`,
+  },
+  year: {
+    [`run.js`]: `const fs = require('fs');
+
+
+
+    module.exports = function test() {
+        const tests = fs.readdirSync(\`\${__dirname}\`, { withFileTypes: true })
+                        .filter(dir => dir.isDirectory())
+                        .map(dir => require(\`\${__dirname}/\${dir.name}/run.js\`));
+        tests.forEach(test => test());
+    }
+    `,
+    [`test.js`]: `const fs = require('fs');
+
+
+
+    module.exports = function test() {
+        const tests = fs.readdirSync(\`\${__dirname}\`, { withFileTypes: true })
+                        .filter(dir => dir.isDirectory())
+                        .map(dir => require(\`\${__dirname}/\${dir.name}/test.js\`));
+        tests.forEach(test => test());
+    }
+    `,
+  }
 };

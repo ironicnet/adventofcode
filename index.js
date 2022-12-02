@@ -31,13 +31,22 @@ const commands = {
             const template = require('./template');
 
             const yearPath = path.resolve(__dirname, `${targetYear}`);
-            if (!fs.existsSync(yearPath)) fs.mkdirSync(yearPath);
+            if (!fs.existsSync(yearPath)) {
+                fs.mkdirSync(yearPath);
+                const { year: yearTemplate } = template;
+                console.log('Files to create: ', Object.keys(yearTemplate));
+                Object.keys(yearTemplate).forEach(file => {
+                    console.info(`Writing ./${targetYear}/${file}`);
+                    fs.writeFileSync(`./${targetYear}/${file}`, yearTemplate[file]);
+                })
+            }
             const dayPath = path.resolve(yearPath, day);
             if (!fs.existsSync(dayPath)) fs.mkdirSync(dayPath);
-            console.log('Files to create: ', Object.keys(template));
-            Object.keys(template).forEach(file => {
+            const { day: dayTemplate } = template;
+            console.log('Files to create: ', Object.keys(dayTemplate));
+            Object.keys(dayTemplate).forEach(file => {
                 console.info(`Writing ./${targetYear}/${day}/${file}`);
-                fs.writeFileSync(`./${targetYear}/${day}/${file}`, template[file]);
+                fs.writeFileSync(`./${targetYear}/${day}/${file}`, dayTemplate[file]);
             })
         }
     }
