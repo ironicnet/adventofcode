@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "node index.js test",
-    "run": "node index.js run",
+    "answer": "node index.js run",
     "create": "node index.js create"
   },
   "repository": {

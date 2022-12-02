@@ -28,4 +28,4 @@ In the run.js file allows to add info about the day for each part
 
 
 To test a day, just run `npm run test 2022/day01`.
-To get the answer for a day, just run `npm run run 2022/day01`
+To get the answer for a day, just run `npm run answer 2022/day01`

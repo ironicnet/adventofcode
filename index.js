@@ -1,13 +1,13 @@
 const fs = require('fs');
 const path = require('path');
 
-const executeDefault = command => ([file]) => {
-    if (!file) {
+const executeDefault = (command, {defaultFile} = {}) => ([file]) => {
+    if (!file && !defaultFile) {
         console.info("No path found");
         return;
     }
     
-    const filePath = `./${file}/${command}.js`;
+    const filePath = `./${file || defaultFile}/${command}.js`;
 
     const commandFn = require(filePath);
 
@@ -20,10 +20,10 @@ const executeDefault = command => ([file]) => {
 };
 const commands = {
     'run': {
-        exec: executeDefault('run'),
+        exec: executeDefault('run', { defaultFile: new Date().getFullYear()}),
     },
     'test': {
-        exec: executeDefault('test'),
+        exec: executeDefault('test', { defaultFile: new Date().getFullYear()}),
     },
     'create': {
         exec: ([day, year]) => {
