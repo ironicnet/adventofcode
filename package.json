@@ -1,0 +1,22 @@
+{
+  "name": "adventofcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js test",
+    "run": "node index.js run",
+    "create": "node index.js create",
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ironicnet/adventofcode.git"
+  },
+  "author": "Ezequiel Calderara",
+  "license": "ISC",
+  "private": "true",
+  "bugs": {
+    "url": "https://github.com/ironicnet/adventofcode/issues"
+  },
+  "homepage": "https://github.com/ironicnet/adventofcode#readme"
+}

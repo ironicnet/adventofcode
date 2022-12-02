@@ -1,4 +1,5 @@
 const fs = require('fs');
+const path = require('path');
 
 const executeDefault = command => ([file]) => {
     if (!file) {
@@ -29,8 +30,10 @@ const commands = {
             const targetYear = year || new Date().getFullYear();
             const template = require('./template');
 
-            console.info(`Writing ./${targetYear}/${day}`);
-            fs.mkdirSync(`./${targetYear}/${day}`);
+            const yearPath = path.resolve(__dirname, `${targetYear}`);
+            if (!fs.existsSync(yearPath)) fs.mkdirSync(yearPath);
+            const dayPath = path.resolve(yearPath, day);
+            if (!fs.existsSync(dayPath)) fs.mkdirSync(dayPath);
             console.log('Files to create: ', Object.keys(template));
             Object.keys(template).forEach(file => {
                 console.info(`Writing ./${targetYear}/${day}/${file}`);
