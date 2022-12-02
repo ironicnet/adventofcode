@@ -6,7 +6,7 @@
   "scripts": {
     "test": "node index.js test",
     "run": "node index.js run",
-    "create": "node index.js create",
+    "create": "node index.js create"
   },
   "repository": {
     "type": "git",
